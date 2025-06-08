@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Btc2Naira - Trade Bitcoin for Naira</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="output.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        .hover-scale { transition: transform 0.2s; }
+        .hover-scale:hover { transform: scale(1.05); }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-green-600 text-white py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Btc2Naira</h1>
+            <nav>
+                <a href="#home" class="mx-2 hover:underline">Home</a>
+                <a href="#how-it-works" class="mx-2 hover:underline">How It Works</a>
+                <a href="#contact" class="mx-2 hover:underline">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <section id="home" class="bg-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">Trade Bitcoin for Naira Instantly</h2>
+            <p class="text-lg text-gray-600 mb-6">Send Bitcoin to our wallet and receive Naira in your bank account within minutes.</p>
+            <a href="#trade" class="bg-green-600 text-white py-2 px-6 rounded-lg hover-scale inline-block">Start Trading</a>
+        </div>
+    </section>
+    <section id="trade" class="py-12 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h3 class="text-2xl font-bold text-center text-gray-800 mb-6">Start Your Trade</h3>
+            <form action="https://formspree.io/f/your-form-id" method="POST" class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
+                <div class="mb-4">
+                    <label for="bitcoin-amount" class="block text-gray-700">Bitcoin Amount (BTC)</label>
+                    <input type="number" step="0.0001" id="bitcoin-amount" name="bitcoin-amount" class="w-full p-2 border rounded" placeholder="e.g., 0.01" required>
+                </div>
+                <div class="mb-4">
+                    <label for="naira-amount" class="block text-gray-700">Expected Naira (NGN)</label>
+                    <input type="text" id="naira-amount" name="naira-amount" class="w-full p-2 border rounded" placeholder="Calculated Naira" readonly>
+                </div>
+                <div class="mb-4">
+                    <label for="bank-details" class="block text-gray-700">Bank Details</label>
+                    <input type="text" id="bank-details" name="bank-details" class="w-full p-2 border rounded" placeholder="Bank Name, Account Number" required>
+                </div>
+                <div class="mb-4">
+                    <p class="text-gray-700">Send Bitcoin to this wallet:</p>
+                    <p class="font-bold text-green-600">bc1qyourrealwalletaddress123</p>
+                </div>
+                <button type="submit" class="w-full bg-green-600 text-white py-2 rounded-lg hover-scale">Submit Trade Request</button>
+                <input type="text" name="_gotcha" style="display:none" />
+            </form>
+        </div>
+    </section>
+    <section id="how-it-works" class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h3 class="text-2xl font-bold text-center text-gray-800 mb-6">How It Works</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="text-center">
+                    <h4 class="text-lg font-bold text-gray-800">1. Submit Trade</h4>
+                    <p class="text-gray-600">Enter your Bitcoin amount and bank details in the form.</p>
+                </div>
+                <div class="text-center">
+                    <h4 class="text-lg font-bold text-gray-800">2. Send Bitcoin</h4>
+                    <p class="text-gray-600">Transfer Bitcoin to our provided wallet address.</p>
+                </div>
+                <div class="text-center">
+                    <h4 class="text-lg font-bold text-gray-800">3. Receive Naira</h4>
+                    <p class="text-gray-600">Get Naira in your bank account within minutes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="py-12 bg-gray-100">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">Contact Us</h3>
+            <p class="text-gray-600 mb-4">Have questions? Reach out to us!</p>
+            <p class="text-gray-700">Email: yourname@gmail.com</p>
+            <p class="text-gray-700">WhatsApp: +234-123-456-7890</p>
+        </div>
+    </section>
+    <footer class="bg-green-600 text-white py-4">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2025 Btc2Naira. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        const btcInput = document.getElementById('bitcoin-amount');
+        const nairaOutput = document.getElementById('naira-amount');
+        const exchangeRate = 200000000; // Adjust to current rate (e.g., 200M NGN/BTC as of 03:00 PM WAT, June 08, 2025)
+        btcInput.addEventListener('input', () => {
+            const btc = parseFloat(btcInput.value);
+            if (!isNaN(btc)) {
+                nairaOutput.value = (btc * exchangeRate).toFixed(2);
+            } else {
+                nairaOutput.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
